@@ -37,6 +37,113 @@
                 </form>
             </li>
             <br>
+            <!-- Link to view all tables in the database -->
+            <li><b>Query: 1<br></b><a href="/query/list_tables">View All Tables in the Database</a></li>
+            <br>
+            <!-- Form to search for a movie by name -->
+            <li><b>Query: 2<br></b>
+                <form action="/query/search_movie" method="POST">
+                    <input type="text" name="movie_name" placeholder="Search for a Movie" required>
+                    <button type="submit">Search Movie</button>
+                </form>
+            </li>
+            <br>
+            <!-- Form to search for movies liked by a specific user -->
+            <li><b>Query: 3<br></b>
+                <form action="/query/search_liked_movies" method="POST">
+                    <input type="email" name="user_email" placeholder="Enter your email" required>
+                    <button type="submit">Search Liked Movies</button>
+                </form>
+            </li>
+            <br>
+            <!-- Form to search for a movie by shooting location country -->
+            <li><b>Query: 4<br></b>
+                <form action="/query/search_by_country" method="POST">
+                    <input type="text" name="country" placeholder="Enter Country" required>
+                    <button type="submit">Search by Country</button>
+                </form>
+            </li>
+
+            <br>
+            <!-- Form to search for directors of TV series shot in a specific zip code -->
+            <li><b>Query: 5<br></b>
+                <form action="/query/search_directors_by_zip" method="POST">
+                    <input type="number" name="zip_code" placeholder="Enter Zip Code" required>
+                    <button type="submit">Search Directors by Zip</button>
+                </form>
+            </li>
+
+            <br>
+            <!-- Form to search for people with more than k awards for a motion picture -->
+            <li><b>Query: 6<br></b>
+                <form action="/query/search_awards" method="POST">
+                    <input type="number" name="k" placeholder="Enter Award Count Threshold" required>
+                    <button type="submit">Search People with More Than K Awards</button>
+                </form>
+            </li>
+
+            <br>
+            <!-- Link to search for the youngest and oldest actors -->
+            <li><b>Query: 7<br></b>
+                <a href="/query/find_youngest_oldest_actors">Find Youngest and Oldest Actors</a>
+            </li>
+
+            <br>
+            <li><b>Query: 8<br></b>
+                <form action="/query/search_producers" method="POST">
+                    <input type="number" name="box_office_min" placeholder="Enter minimum box office collection (X)"
+                        required>
+                    <input type="number" name="budget_max" placeholder="Enter maximum budget (Y)" required>
+                    <button type="submit">Search American Producers</button>
+                </form>
+            </li>
+
+            <br>
+            <!-- Form to search for people with multiple roles in a movie with rating > X -->
+            <li><b>Query: 9<br></b>
+                <form action="/query/search_multiple_roles" method="POST">
+                    <input type="number" step="0.1" name="rating_threshold" placeholder="Enter Rating Threshold (X)"
+                        required>
+                    <button type="submit">Search People with Multiple Roles</button>
+                </form>
+            </li>
+
+            <br>
+            <!-- New Link to find top 2 rated thriller movies shot exclusively in Boston -->
+            <li><b>Query: 10<br></b><a href="/query/top_thriller_movies_boston">Top 2 Rated Thriller Movies Shot Exclusively
+                    in Boston</a></li>
+
+            <br>
+            <!-- Form to search for movies with more than X likes by users under age Y -->
+            <li><b>Query: 11<br></b>
+                <form action="/query/search_movies_by_likes" method="POST">
+                    <input type="number" name="min_likes" placeholder="Enter Minimum Likes (X)" required>
+                    <input type="number" name="max_age" placeholder="Enter Maximum Age (Y)" required>
+                    <button type="submit">Search Movies by Likes</button>
+                </form>
+            </li>
+
+            <br>
+            <!-- Link to search for actors who have appeared in both Marvel and Warner Bros movies -->
+            <li><b>Query: 12<br></b><a href="/query/actors_marvel_warner">Actors in Both Marvel and Warner Bros Movies</a>
+            </li>
+
+            <br>
+            <!-- Link to search for actors who have appeared in both Marvel and Warner Bros movies -->
+            <li><b>Query: 13<br></b><a href="/query/movies_higher_than_comedy_avg">Movies Higher Rating Than Avg. Rating of
+                    Comedy</a></li>
+
+            <br>
+            <!-- Link to search for actors who have appeared in both Marvel and Warner Bros movies -->
+            <li><b>Query: 14<br></b><a href="/query/top_5_movies_people_roles">Top 5 Movies with the Highest Number of People
+                    Playing a Role</a></li>
+
+            <br>
+            <!-- Link to search for actors who have appeared in both Marvel and Warner Bros movies -->
+            <li><b>Query: 15<br></b><a href="/query/actors_with_common_birthday">Actors with Common Birthdays</a></li>
+        </ul>
+
+        <br>
         <!-- Link to home page (if needed) -->
         <a href="/">Back to Home</a>
     </div>

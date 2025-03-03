@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Producers Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>American Producers with Box Office Collection >= {{ request.form['box_office_min'] }} and Budget <= {{ request.form['budget_max'] }}</h1>
+        
+        {% if results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producer Name</th>
+                        <th>Movie Name</th>
+                        <th>Box Office Collection</th>
+                        <th>Budget</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result[0] }}</td> <!-- Producer Name -->
+                            <td>{{ result[1] }}</td> <!-- Movie Name -->
+                            <td>{{ result[2] }}</td> <!-- Box Office Collection -->
+                            <td>{{ result[3] }}</td> <!-- Budget -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No producers found with the specified criteria.</p>
+        {% endif %}
+        
+        <br>
+        <a href="/">Back to Home</a>  <!-- Link back to home page -->
+    </div>
+</body>
+</html>

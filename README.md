@@ -7,8 +7,31 @@ The project is structured to **learn SQL** by implementing queries and database 
 
 > **IMPORTANT**: Object Relational Model (ORM) based queries are **not allowed** for any task. **All queries must be written using raw SQL statements without any Python-based processing.**
 
----
+<br><br><br>
 
+# Updating Your Code for PA 1.2
+Before you start PA 1.2, you need to update your existing code with the latest changes. You can do this in one of two ways:
+
+1. **Using Git:**
+   - Open your terminal.
+   - Navigate to your project directory using the command:
+     ```bash
+     cd <path to your project directory>
+     ```
+   - Run the following command to pull the latest changes:
+     ```bash
+     git pull
+     ```
+
+2. **Manually Downloading the Update:**
+   - Visit the [YourOwnIMDb GitHub repository](https://github.com/SSD-Brandeis/YourOwnIMDb).
+   - Click the green **"Code"** button.
+   - Select **"Download ZIP"** to get the updated code.
+
+
+<br><br><br>
+
+# PA 1.1
 ## **1. Pre-Requisites**
 - **Python (3.10 or later)**
 - **MariaDB**
@@ -25,15 +48,15 @@ The project is structured to **learn SQL** by implementing queries and database 
    > **NOTE**: If you have already set up MariaDB for Written Assignment 2, you may skip the first two sections (*Installation* and *Starting the MariaDB Server*).
 
    Choose the appropriate installation method for your operating system:
-    - **MacOS (Homebrew)**  
+   - **MacOS (Homebrew)**  
       ```bash
       brew install mariadb
       ```
-    - **Ubuntu/Debian**  
+   - **Ubuntu/Debian**  
       ```bash
       sudo apt install mariadb-server
       ```
-    - **Windows**  
+   - **Windows**  
       Download and install from [MariaDB Official Website](https://mariadb.org/).
 
 2. **Start MariaDB Server**
@@ -69,9 +92,9 @@ The project is structured to **learn SQL** by implementing queries and database 
 
 ### **Step 2: Clone or Download the Project**
 - Clone the repository using:
-  ```bash
-  git clone https://github.com/SSD-Brandeis/IMDbDatabase
-  ```
+```bash
+git clone https://github.com/SSD-Brandeis/IMDbDatabase
+```
 - Or download it manually from [GitHub](https://github.com/SSD-Brandeis/IMDbDatabase) by clicking the green "Code" button → **Download ZIP**.
 
 ---
@@ -154,19 +177,19 @@ Modify the function inside `movies.py` to allow users to like a movie.
 If you encounter issues, use the following commands:
 
 - **Truncate table data** (removes all rows but keeps table structure):
-  ```sql
-  TRUNCATE TABLE <table_name>;
-  ```
+```sql
+TRUNCATE TABLE <table_name>;
+```
 - **Drop table and recreate**:
-  ```sql
-  DROP TABLE <table_name>;
-  ```
+```sql
+DROP TABLE <table_name>;
+```
 - **Fix foreign key constraint errors when truncating/deleting**:
-  ```sql
-  SET FOREIGN_KEY_CHECKS=0;
-  TRUNCATE TABLE <table_name>;
-  SET FOREIGN_KEY_CHECKS=1;
-  ```
+```sql
+SET FOREIGN_KEY_CHECKS=0;
+TRUNCATE TABLE <table_name>;
+SET FOREIGN_KEY_CHECKS=1;
+```
 
 ---
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Roles Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>People Who Have Played Multiple Roles in a Movie with Rating > {{ request.form['rating_threshold'] }}</h1>
+        
+        {% if results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Person Name</th>
+                        <th>Movie Name</th>
+                        <th>Role Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result[0] }}</td> <!-- Person Name -->
+                            <td>{{ result[1] }}</td> <!-- Movie Name -->
+                            <td>{{ result[2] }}</td> <!-- Role Count -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No results found for people with multiple roles in a movie with rating > {{ request.form['rating_threshold'] }}.</p>
+        {% endif %}
+        
+        <br>
+        <a href="/">Back to Home</a>  <!-- Link back to home page -->
+    </div>
+</body>
+</html>

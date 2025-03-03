@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actors with Common Birthday</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Actors Who Share the Same Birthday</h1>
+        
+        {% if results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Actor 1</th>
+                        <th>Actor 2</th>
+                        <th>Common Birthday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result[0] }}</td> <!-- Actor 1 Name -->
+                            <td>{{ result[1] }}</td> <!-- Actor 2 Name -->
+                            <td>{{ result[2] }}</td> <!-- Common Birthday -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No actors found with a shared birthday.</p>
+        {% endif %}
+        
+        <br>
+        <a href="/">Back to Home</a>  <!-- Link back to home page -->
+    </div>
+</body>
+</html>

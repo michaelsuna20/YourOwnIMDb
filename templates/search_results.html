@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Search Results</h1>
+        
+        {% if movies %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Movie Name</th>
+                        <th>Rating</th>
+                        <th>Production</th>
+                        <th>Budget</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for movie in movies %}
+                        <tr>
+                            <td>{{ movie[0] }}</td> <!-- Movie Name -->
+                            <td>{{ movie[1] }}</td> <!-- Rating -->
+                            <td>{{ movie[2] }}</td> <!-- Production -->
+                            <td>{{ movie[3] }}</td> <!-- Budget -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No movies found matching your search.</p>
+        {% endif %}
+        
+        <br>
+        <a href="/">Back to Home</a>  <!-- Link back to home page -->
+    </div>
+</body>
+</html>

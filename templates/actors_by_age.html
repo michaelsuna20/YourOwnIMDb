@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youngest and Oldest Actors</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Youngest and Oldest Actors to Win Awards</h1>
+        
+        <h2>Youngest Actors</h2>
+        {% if youngest_actors %}
+            <ul>
+                {% for actor in youngest_actors %}
+                    <li>{{ actor[0] }} - Age: {{ actor[1] }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No youngest actors found.</p>
+        {% endif %}
+        
+        <h2>Oldest Actors</h2>
+        {% if oldest_actors %}
+            <ul>
+                {% for actor in oldest_actors %}
+                    <li>{{ actor[0] }} - Age: {{ actor[1] }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No oldest actors found.</p>
+        {% endif %}
+        
+        <br>
+        <a href="/">Back to Home</a>  <!-- Link back to home page -->
+    </div>
+</body>
+</html>

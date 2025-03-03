@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies with Likes by Young Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Movies with More than {{ request.form['min_likes'] }} Likes by Users Under Age {{ request.form['max_age'] }}</h1>
+        
+        {% if results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Movie Name</th>
+                        <th>Number of Likes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result[0] }}</td> <!-- Movie Name -->
+                            <td>{{ result[1] }}</td> <!-- Number of Likes -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No results found for movies with the specified criteria.</p>
+        {% endif %}
+        
+        <br>
+        <a href="/">Back to Home</a>  <!-- Link back to home page -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies by Country</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Movies Shot in {{ request.form['country'] }}</h1>
+        
+        {% if movies %}
+            <ul>
+                {% for movie in movies %}
+                    <li>{{ movie[0] }}</li> <!-- Movie Name -->
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No movies found shot in this country.</p>
+        {% endif %}
+        
+        <br>
+        <a href="/">Back to Home</a>  <!-- Link back to home page -->
+    </div>
+</body>
+</html>

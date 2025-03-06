@@ -10,7 +10,7 @@ def list_tables():
 
     # >>>> TODO 1: Write a query to list all the tables in the database. <<<<
 
-    query = """ """
+    query = """SELECT table_name FROM information_schema.tables WHERE table_type='BASE TABLE' AND table_schema = 'moviedb';"""
 
     with Database() as db:
         tables = db.execute(query)
@@ -40,7 +40,10 @@ def search_liked_movies():
     # >>>> TODO 3: Find the movies that have been liked by a specific user’s email. <<<<
     #              List the movie `name`, `rating`, `production` and `budget`.
 
-    query = """ """
+    query = """SELECT M.name, M.rating, M.production, M.budget
+            FROM MotionPicture M
+            JOIN Likes L ON L.mpid=M.id
+            WHERE L.uemail = %s; """
 
     with Database() as db:
         movies = db.execute(query, (user_email,))
@@ -70,7 +73,12 @@ def search_directors_by_zip():
     # >>>> TODO 5: List all directors who have directed TV series shot in a specific zip code. <<<<
     #              List the director name and TV series name only without duplicates.
 
-    query = """ """
+    query = """SELECT p.name, l.zip FROM Location l
+        JOIN Series s on s.mpid = l.mpid
+        JOIN Role r ON r.mpid = s.mpid
+        JOIN People p ON p.id = r.pid
+        WHERE l.zip=%s AND r.role_name='Director';
+"""
 
     with Database() as db:
         results = db.execute(query, (zip_code,))
@@ -104,7 +112,18 @@ def find_youngest_oldest_actors():
     #              The age should be computed from the person’s date of birth to the award winning year only. 
     #              In case of a tie, list all of them.
 
-    query = """ """
+    query = """ WITH Actors AS (
+                  SELECT p.name, a.award_year - EXTRACT(YEAR FROM p.dob) AS age
+                  FROM Award a
+                  JOIN People p ON a.pid = p.id
+                  JOIN Role r ON a.mpid = r.mpid AND a.pid = r.pid
+                  WHERE r.role_name = 'actor'
+                )
+    SELECT name, age
+    FROM Actors
+        WHERE age = (SELECT MIN(age) FROM Actors)
+           OR age = (SELECT MAX(age) FROM Actors);
+"""
 
     with Database() as db:
         actors = db.execute(query)

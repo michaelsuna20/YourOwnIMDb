@@ -24,8 +24,8 @@ def search_movie():
 
     # >>>> TODO 2: Search Motion Picture by Motion picture name. <<<<
     #              List the movie `name`, `rating`, `production` and `budget`.
-
-    query = """SELECT M.name AS film, M.rating, M.production AS production company, M.budget AS budget FROM MotionPicture M WHERE M.name = %s;"""
+ 
+    query = """SELECT M.name AS film, M.rating, M.production AS production_company, M.budget FROM MotionPicture M WHERE M.name = '%s';"""
     
     with Database() as db:
         movies = db.execute(query, (f"%{movie_name}%",))

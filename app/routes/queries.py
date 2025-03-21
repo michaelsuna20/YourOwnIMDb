@@ -28,7 +28,7 @@ def search_movie():
     query = """SELECT M.name AS film, M.rating, M.production AS production_company, M.budget FROM MotionPicture M WHERE M.name = %s;"""
     
     with Database() as db:
-        movies = db.execute(query, (f"%{movie_name}%",))
+        movies = db.execute(query, (movie_name,))
     return render_template("search_results.html", movies=movies)
 
 

@@ -237,8 +237,8 @@ def actors_marvel_warner():
     # >>>> TODO 12: Find the actors who have played a role in both “Marvel” and “Warner Bros” productions. <<<<
     #               List the `actor names` and the corresponding `motion picture names`.
 
-    query = """SELECT P.name AS person, MP.name AS film FROM People P, Role R, MotionPicture MP WHERE R.mpid = MP.id AND P.id = R.pid AND MP.production = 'Marvel' AND P.name IN (SELECT P.name FROM People P, Role R, MotionPicture MP WHERE R.mpid = MP.id AND P.id = R.pid AND MP.production = 'Warner Bros'); """
-
+    query = """SELECT P.name AS person, MP1.name AS marvel, MP2.name AS warner_bros FROM People P, Role R1, Role R2, MotionPicture MP1, MotionPicture MP2 WHERE P.id = R1.pid AND P.id = R2.pid AND MP1.production = 'Marvel' AND MP2.production = 'Warner Bros' AND R1.mpid = MP1.id AND R2.mpid = MP2.id;"""
+    
     with Database() as db:
         results = db.execute(query)
     return render_template("actors_marvel_warner.html", results=results)
